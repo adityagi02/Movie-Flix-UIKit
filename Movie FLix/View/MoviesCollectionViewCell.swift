@@ -16,9 +16,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
     @IBOutlet private weak var movieImage: UIImageView!
-    
 }
 
 

@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import youtube_ios_player_helper
 
 private let identifier: String = "MovieCell"
 private let unpopularCellIdentifier: String = "UnpopularMovieCell"
@@ -33,7 +34,6 @@ class NowPlayingMoviesVC: UIViewController, UICollectionViewDelegate, UICollecti
             DispatchQueue.main.async {
                     self.collectionView.reloadData()
                   }
-      //      print(self.movies)
         }
     }
 }
@@ -44,11 +44,9 @@ class NowPlayingMoviesVC: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! MoviesCollectionViewCell
-        let movieOfCell1 = movies?[indexPath.item]
         cell1.movie = movies?[indexPath.item]
         let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: unpopularCellIdentifier, for: indexPath) as! UnpopularMoviesCollectionViewCell
         cell2.unpopularMovie = movies?[indexPath.item]
-        let movieOfCell2 = movies?[indexPath.item]
         if cell1.movie?.voteAverage ?? 0 < 7 {
             return cell2
         }else {
@@ -65,19 +63,7 @@ class NowPlayingMoviesVC: UIViewController, UICollectionViewDelegate, UICollecti
             vc?.posterID = movies?[indexPath.row].backdropPath ?? "00000000"
             vc?.movieID = movies?[indexPath.row].id ?? 0
             vc?.rating = movies?[indexPath.row].voteAverage ?? 10
+            
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-    
- 
-    
-    
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if segue.identifier == "MovieCell" {
-//                if let detailVC = segue.destination as? DetailMoviesVC {
-//                    if let paths = collectionView?.indexPathsForSelectedItems {
-//                        let row = movies![0].title
-//                    }
-//                }
-//            }
-//        }
 }
