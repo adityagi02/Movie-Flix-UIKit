@@ -34,7 +34,6 @@ class API {
     class func fetchTrendingMoviesTrailers(movieID: Int,_ onSuccess: @escaping (TrailerResults) -> Void){
         coder.keyDecodingStrategy = .convertFromSnakeCase
         let str1 = "\(movieID)"
-        print(movieID)
         let urlStr = "https://api.themoviedb.org/3/movie/\(str1)/videos?api_key=\(apiKey)"
         guard let url = URL(string: urlStr) else { fatalError("Unable to get URL") }
         AF.request(url).response { response in

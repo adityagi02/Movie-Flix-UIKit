@@ -24,6 +24,7 @@ class DetailMoviesVC: UIViewController {
     var posterID = " "
     var rating: Double = 0
     var movieID: Int = 0
+    var movieNumber: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,8 @@ class DetailMoviesVC: UIViewController {
             count = count+1
         }
         self.ratingStars.text = stars
-        self.playerView.load(withVideoId: "mqqft2x_Aa4")
+        fetch()
+        self.playerView.load(withVideoId: movies?[movieNumber].key ?? "iA_wCcG-dQQ")
     }
     
     

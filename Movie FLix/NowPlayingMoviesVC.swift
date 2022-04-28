@@ -55,15 +55,13 @@ class NowPlayingMoviesVC: UIViewController, UICollectionViewDelegate, UICollecti
     }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           // let movie = movies?[indexPath.row]
             let vc = storyboard?.instantiateViewController(withIdentifier: "DetailMoviesVC") as? DetailMoviesVC
             vc?.movieDescriptionSent = movies?[indexPath.row].overview ?? "Description `NOT FOUND`"
-          //  print(movies?[indexPath.row].title)
             vc?.moviesTitleSent = movies?[indexPath.row].title ?? "Title `NOT FOUND`"
             vc?.posterID = movies?[indexPath.row].backdropPath ?? "00000000"
             vc?.movieID = movies?[indexPath.row].id ?? 0
             vc?.rating = movies?[indexPath.row].voteAverage ?? 10
-            
+            vc?.movieNumber = indexPath.row
             self.navigationController?.pushViewController(vc!, animated: true)
         }
 }
